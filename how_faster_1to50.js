@@ -1,6 +1,6 @@
 grid = document.getElementById("grid"); 
 new_grid = grid.getElementsByTagName("div")
-var seconds = 7
+var seconds = 8
 var milli = seconds*20.49
 
 function return_the_number(){
