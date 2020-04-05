@@ -1,15 +1,15 @@
 grid = document.getElementById("grid"); 
 new_grid = grid.getElementsByTagName("div")
 
-function get_the_different_color() {
-	for (i = 0; i < new_grid.length; i++){
-		var counter = 0
-		for (n = 0; n < new_grid.length; n++){
-			if (jQuery(new_grid[i]).css("background-color") != jQuery(new_grid[n]).css("background-color")){
-				counter += 1 
-			}
-		}
-		if (counter == new_grid.length - 1)	{
+grid2 = document.getElementById("mainColor")
+
+function get_the_mainColor() {
+	return jQuery(grid2).css("background-color")
+}
+
+function get_the_same_color_from_body(color) {
+	for (var i = 0; i < new_grid.length; i++){
+		if (jQuery(new_grid[i]).css("background-color") == color){
 			return i
 		}
 	}
@@ -19,11 +19,13 @@ function click_the_num(number){
     $(new_grid[number]).trigger("tap")
 }
 
-function main() {
+function main(){
 	for (var x = 0; x < 5000; x++){
 	setTimeout(function(){ 
-		var number = get_the_different_color()
+		var color = get_the_mainColor()
+		var number = get_the_same_color_from_body(color)
 		click_the_num(number);
-		}, 100*x);
+		}, 200*x);
 	}
 }
+main()
